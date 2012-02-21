@@ -11,8 +11,8 @@ import java.awt.*;
  * @author Glenn Latomme <glenn.latomme@gmail.com>
  */
 public class Field extends javax.swing.JPanel {
-    public static final int WIDTH  = 800;
-    public static final int HEIGTH = 600;
+    public static final int FIELDWIDTH  = 800;
+    public static final int FIELDHEIGTH = 600;
     public static final int SQUAREWIDTH = 50;
     /**
      * Creates new form Field
@@ -43,16 +43,15 @@ public class Field extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
-        // @TODO 
-    }                                 
-
+        
+    }
     @Override
     public void paintComponent(Graphics g) {
         DrawField(g);
     }
     private void DrawField(Graphics g) {
-        int Kolums = WIDTH / SQUAREWIDTH;
-        int Rows = HEIGTH / SQUAREWIDTH;
+        int Kolums = FIELDWIDTH / SQUAREWIDTH;
+        int Rows = FIELDHEIGTH / SQUAREWIDTH;
         
         for (int k = 0; k < Kolums; k++){
             for (int r = 0; r < Kolums; r ++){
