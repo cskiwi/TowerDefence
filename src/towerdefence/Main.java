@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package towerdefence;
-
 /**
  *
  * @author Kiwi
@@ -13,9 +12,11 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    private Field field;
+    
     public Main() {
         initComponents();
-
+        field = new Field();
     }
 
     /**
@@ -27,19 +28,36 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        field1 = new towerdefence.Field();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
+
+        field1.setPreferredSize(new java.awt.Dimension(801, 601));
+
+        javax.swing.GroupLayout field1Layout = new javax.swing.GroupLayout(field1);
+        field1.setLayout(field1Layout);
+        field1Layout.setHorizontalGroup(
+            field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 801, Short.MAX_VALUE)
+        );
+        field1Layout.setVerticalGroup(
+            field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 601, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -87,5 +105,6 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private towerdefence.Field field1;
     // End of variables declaration//GEN-END:variables
 }

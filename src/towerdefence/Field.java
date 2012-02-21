@@ -13,7 +13,7 @@ import java.awt.*;
 public class Field extends javax.swing.JPanel {
     public static final int WIDTH  = 800;
     public static final int HEIGTH = 600;
-    public static final int SQUAREWIDTH = 10;
+    public static final int SQUAREWIDTH = 50;
     /**
      * Creates new form Field
      */
@@ -48,9 +48,17 @@ public class Field extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        DrawField(g);
+    }
+    private void DrawField(Graphics g) {
+        int Kolums = WIDTH / SQUAREWIDTH;
+        int Rows = HEIGTH / SQUAREWIDTH;
         
+        for (int k = 0; k < Kolums; k++){
+            for (int r = 0; r < Kolums; r ++){
+                g.drawRect(SQUAREWIDTH*k, SQUAREWIDTH*r, SQUAREWIDTH, SQUAREWIDTH);
+            }           
+        }        
     }
-    private void tekenBord(Graphics g) {
-        // @TODO
-    }
+    
 }
