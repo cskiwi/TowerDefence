@@ -5,8 +5,7 @@
 package towerdefence;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import javax.imageio.ImageIO;
 
 /**
@@ -25,6 +24,7 @@ public class Button {
             image = ImageIO.read(new File(ImageLoaction));
         } catch (IOException e) { 
             System.out.println(e.getMessage());
+            System.out.println("I'm located at:" + System.getProperty("user.dir"));
         }
         try {
             ImageHover = ImageIO.read(new File(ImageLoactionHover));
