@@ -19,6 +19,7 @@ public class Main extends javax.swing.JFrame {    /**
            initComponents();
            field = new Field();
            overlayMenu1.setVisible(Keypressed);
+
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -114,7 +115,7 @@ public class Main extends javax.swing.JFrame {    /**
             public void run() {
                 new Main().setVisible(true);
             }
-        });
+          });
     }  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private towerdefence.Field field1;

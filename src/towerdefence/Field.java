@@ -49,6 +49,9 @@ public class Field extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         DrawField(g);
     }
+    public void Tick(){
+        
+    }
     private void DrawField(Graphics g) {
         int Kolums = FIELDWIDTH / SQUAREWIDTH;
         int Rows = FIELDHEIGTH / SQUAREWIDTH;

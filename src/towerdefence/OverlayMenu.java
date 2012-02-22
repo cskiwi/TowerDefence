@@ -81,4 +81,7 @@ public class OverlayMenu extends javax.swing.JPanel {
         // Draw
         g.fillRect(0, 0, getWidth(), getHeight());
     }
+    public void Tick(){
+        System.out.println("PiNg");
+    }
 }
