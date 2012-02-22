@@ -25,8 +25,8 @@ public class Main extends javax.swing.JFrame {    /**
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        overlayMenu1 = new towerdefence.OverlayMenu();
         field1 = new towerdefence.Field();
+        overlayMenu1 = new towerdefence.OverlayMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TowerDefence");
@@ -48,6 +48,23 @@ public class Main extends javax.swing.JFrame {    /**
         });
         getContentPane().setLayout(null);
 
+        field1.setName("Field");
+        field1.setPreferredSize(new java.awt.Dimension(5000, 5000));
+
+        javax.swing.GroupLayout field1Layout = new javax.swing.GroupLayout(field1);
+        field1.setLayout(field1Layout);
+        field1Layout.setHorizontalGroup(
+            field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5000, Short.MAX_VALUE)
+        );
+        field1Layout.setVerticalGroup(
+            field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, Short.MAX_VALUE, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(field1);
+        field1.setBounds(0, 0, 5000, 5000);
+
         overlayMenu1.setBackground(new java.awt.Color(0, 0, 0));
         overlayMenu1.setMinimumSize(new java.awt.Dimension(100, 100));
         overlayMenu1.setPreferredSize(new java.awt.Dimension(5000, 5000));
@@ -65,23 +82,6 @@ public class Main extends javax.swing.JFrame {    /**
 
         getContentPane().add(overlayMenu1);
         overlayMenu1.setBounds(0, 0, 5000, 5000);
-
-        field1.setName("Field");
-        field1.setPreferredSize(new java.awt.Dimension(5000, 5000));
-
-        javax.swing.GroupLayout field1Layout = new javax.swing.GroupLayout(field1);
-        field1.setLayout(field1Layout);
-        field1Layout.setHorizontalGroup(
-            field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5000, Short.MAX_VALUE)
-        );
-        field1Layout.setVerticalGroup(
-            field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, Short.MAX_VALUE, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(field1);
-        field1.setBounds(0, 0, 5000, 5000);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

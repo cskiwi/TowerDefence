@@ -11,15 +11,19 @@ import towerdefence.Button;
  *
  * @author Glenn Latomme <glenn.latomme@gmail.com>
  */
-public class OverlayMenu extends javax.swing.JPanel {
+public class OverlayMenu extends javax.swing.JPanel implements Runnable{
 
     /**
      * Creates new form OverlayMenu
      */
     Button btnQuit = new Button(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 50, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 15, "./src/img/Quit.png", "./src/img/QuitHover.png");
+    Thread Th;
+    Color Background = new Color(0,0,0,1);
     
     public OverlayMenu() {
         initComponents();
+        Th = new Thread(this);
+	Th.start();
     }
 
     /**
@@ -66,7 +70,16 @@ public class OverlayMenu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
+    
+    public void run(){
+        while (true){
+            Tick();
+            repaint();
+        }
+    }
+    private void Tick(){
+        
+    }
     @Override
     public void paintComponent(Graphics g) {
         DrawField(g);
@@ -75,13 +88,8 @@ public class OverlayMenu extends javax.swing.JPanel {
     private void DrawField(Graphics g) {
         // Clear the screen
         // Init color     
-        Color Background = new Color(0,0,0,100);
         g.setColor(Background);
-        
         // Draw
         g.fillRect(0, 0, getWidth(), getHeight());
-    }
-    public void Tick(){
-        System.out.println("PiNg");
     }
 }

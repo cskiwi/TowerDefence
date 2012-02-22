@@ -6,19 +6,23 @@ package towerdefence;
 
 import java.awt.*;
 
+
 /**
  *
  * @author Glenn Latomme <glenn.latomme@gmail.com>
  */
-public class Field extends javax.swing.JPanel {
+public class Field extends javax.swing.JPanel implements Runnable {
     public static final int FIELDWIDTH  = 800;
     public static final int FIELDHEIGTH = 600;
     public static final int SQUAREWIDTH = 50;
+    Thread Th;
     /**
      * Creates new form Field
      */
     public Field() {
         initComponents();
+        Th=new Thread(this);
+	Th.start();
     }
 
     /**
@@ -41,24 +45,32 @@ public class Field extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
+    public void run(){
+        while (true){
+            // If Pause is pressed
+            if(this.hasFocus()){
+                Tick();
+                repaint();
+            } else {
+                // chillax
+            }
+        }
+    }
+    private void Tick(){
         
     }
     @Override
     public void paintComponent(Graphics g) {
         DrawField(g);
     }
-    public void Tick(){
-        
-    }
     private void DrawField(Graphics g) {
+        int Initial_Xpos = 100, Initial_Ypos = 100;
         int Kolums = FIELDWIDTH / SQUAREWIDTH;
         int Rows = FIELDHEIGTH / SQUAREWIDTH;
         
         for (int k = 0; k < Kolums; k++){
-            for (int r = 0; r < Kolums; r ++){
-                g.drawRect(SQUAREWIDTH*k, SQUAREWIDTH*r, SQUAREWIDTH, SQUAREWIDTH);
+            for (int r = 0; r < Rows; r ++){
+                g.drawRect(SQUAREWIDTH*k + Initial_Xpos, SQUAREWIDTH*r +Initial_Ypos, SQUAREWIDTH + Initial_Xpos, SQUAREWIDTH + Initial_Ypos);
             }           
         }        
     }
