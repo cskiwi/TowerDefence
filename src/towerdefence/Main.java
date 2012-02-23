@@ -11,22 +11,15 @@ import java.awt.event.KeyEvent;
  */
 public class Main extends javax.swing.JFrame {    /**
      * Creates new form Main
-     */
-    private Field field;
-    public boolean Keypressed = false;
-    
+     */  
     public Main() {
            initComponents();
-           field = new Field();
-           overlayMenu1.setVisible(Keypressed);
-
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        field1 = new towerdefence.Field();
-        overlayMenu1 = new towerdefence.OverlayMenu();
+        field1 = new towerdefence.Game();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TowerDefence");
@@ -65,33 +58,14 @@ public class Main extends javax.swing.JFrame {    /**
         getContentPane().add(field1);
         field1.setBounds(0, 0, 5000, 5000);
 
-        overlayMenu1.setBackground(new java.awt.Color(0, 0, 0));
-        overlayMenu1.setMinimumSize(new java.awt.Dimension(100, 100));
-        overlayMenu1.setPreferredSize(new java.awt.Dimension(5000, 5000));
-
-        javax.swing.GroupLayout overlayMenu1Layout = new javax.swing.GroupLayout(overlayMenu1);
-        overlayMenu1.setLayout(overlayMenu1Layout);
-        overlayMenu1Layout.setHorizontalGroup(
-            overlayMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5000, Short.MAX_VALUE)
-        );
-        overlayMenu1Layout.setVerticalGroup(
-            overlayMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5000, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(overlayMenu1);
-        overlayMenu1.setBounds(0, 0, 5000, 5000);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // Pop's up Ingame menu
         if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            if (Keypressed) Keypressed = false;
-            else Keypressed = true;
-            overlayMenu1.setVisible(Keypressed);
-            repaint();
+            if (field1.EscIsPressed) field1.EscIsPressed = false;
+            else field1.EscIsPressed = true;
+            
         }        
     }//GEN-LAST:event_formKeyPressed
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -118,7 +92,6 @@ public class Main extends javax.swing.JFrame {    /**
           });
     }  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private towerdefence.Field field1;
-    private towerdefence.OverlayMenu overlayMenu1;
+    private towerdefence.Game field1;
     // End of variables declaration//GEN-END:variables
 }

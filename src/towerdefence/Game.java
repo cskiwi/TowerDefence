@@ -4,25 +4,28 @@
  */
 package towerdefence;
 
-import java.awt.*;
-
+import Interface.OverlayPanel;
+import Interface.Playfield;
+import java.awt.Color;
+import java.awt.Graphics;
 
 /**
  *
  * @author Glenn Latomme <glenn.latomme@gmail.com>
  */
-public class Field extends javax.swing.JPanel implements Runnable {
-    public static final int FIELDWIDTH  = 800;
-    public static final int FIELDHEIGTH = 600;
-    public static final int SQUAREWIDTH = 50;
+public class Game extends javax.swing.JPanel implements Runnable {
+
     Thread Th;
-    /**
-     * Creates new form Field
-     */
-    public Field() {
+    // Gamefield
+    Playfield Playfield = new Playfield();
+    // Overlay
+    public boolean EscIsPressed = false;
+    OverlayPanel OverlayPanel = new OverlayPanel();
+
+    public Game() {
         initComponents();
-        Th=new Thread(this);
-	Th.start();
+        Th = new Thread(this);
+        Th.start();
     }
 
     /**
@@ -31,6 +34,12 @@ public class Field extends javax.swing.JPanel implements Runnable {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -43,36 +52,37 @@ public class Field extends javax.swing.JPanel implements Runnable {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+       OverlayPanel.MouseClicked(evt);
+    }//GEN-LAST:event_formMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    public void run(){
-        while (true){
-            // If Pause is pressed
-            if(this.hasFocus()){
-                Tick();
-                repaint();
-            } else {
-                // chillax
-            }
+
+    @Override
+    public void run() {
+        while (true) {
+            Tick();
+            repaint();
+            
         }
     }
-    private void Tick(){
-        
+
+    private void Tick() {
+        if (EscIsPressed == false) {
+            Playfield.tick();
+        } else {
+            OverlayPanel.tick();
+        }
     }
+
     @Override
-    public void paintComponent(Graphics g) {
-        DrawField(g);
+    public void paintComponent(Graphics g) {       
+        if (EscIsPressed == false) {
+            Playfield.paint(g);
+        } else {
+            OverlayPanel.paint(g);
+        }
     }
-    private void DrawField(Graphics g) {
-        int Initial_Xpos = 100, Initial_Ypos = 100;
-        int Kolums = FIELDWIDTH / SQUAREWIDTH;
-        int Rows = FIELDHEIGTH / SQUAREWIDTH;
-        
-        for (int k = 0; k < Kolums; k++){
-            for (int r = 0; r < Rows; r ++){
-                g.drawRect(SQUAREWIDTH*k + Initial_Xpos, SQUAREWIDTH*r +Initial_Ypos, SQUAREWIDTH + Initial_Xpos, SQUAREWIDTH + Initial_Ypos);
-            }           
-        }        
-    }
-    
 }
