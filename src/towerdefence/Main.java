@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 package towerdefence;
-import java.awt.*;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 /**
  *
- * @author Kiwi
+ * @author Glenn latomme
  */
 public class Main extends javax.swing.JFrame {    /**
      * Creates new form Main
