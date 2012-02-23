@@ -14,9 +14,9 @@ import java.awt.geom.Point2D;
 public class Playfield {
 
     int Initial_Xpos, Initial_Ypos;
-    public static final int FIELDWIDTH = 800;
-    public static final int FIELDHEIGTH = 600;
-    public static final int SQUAREWIDTH = 50;
+    private static final int FIELDWIDTH = 800;
+    private static final int FIELDHEIGTH = 600;
+    private static final int SQUAREWIDTH = 50;
     int Kolums = FIELDWIDTH / SQUAREWIDTH;
     int Rows = FIELDHEIGTH / SQUAREWIDTH;
     Point2D.Double[][] FieldArr = new Point2D.Double[Rows][Kolums];
@@ -61,11 +61,34 @@ public class Playfield {
         return SQUAREWIDTH;
     }
 
-    public int getKolumNR(int Xpos) {
-        return Xpos / SQUAREWIDTH - Initial_Xpos / SQUAREWIDTH + 1;
+    public int getKolumNR(int Ypos) {
+        int returnKolum = 0;
+
+        returnKolum = (Ypos - Initial_Ypos) / SQUAREWIDTH;
+        if (returnKolum < 0) {
+            returnKolum = -1;
+        } else if (returnKolum >= Kolums) {
+            returnKolum = -1;
+        }
+        return returnKolum;
     }
 
-    public int getRowNR(int Ypos) {
-        return Ypos / SQUAREWIDTH - Initial_Ypos / SQUAREWIDTH + 1;
+    public int getRowNR(int Xpos) {
+        int returnRow = 0;
+        returnRow = (Xpos - Initial_Xpos) / SQUAREWIDTH;
+        if (returnRow < 0) {
+            returnRow = -1;
+        } else if (returnRow >= Rows) {
+            returnRow = -1;
+        }
+        return returnRow;
+    }
+
+    public int GetinitialXPos() {
+        return Initial_Xpos;
+    }
+
+    public int GetinitialYPos() {
+        return Initial_Ypos;
     }
 }

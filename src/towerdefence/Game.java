@@ -11,13 +11,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import tower.TowerHandler;
 
 /**
  *
  * @author Glenn Latomme <glenn.latomme@gmail.com>
  */
 public class Game extends javax.swing.JPanel implements Runnable {
-
+    
     Thread Th;
     double Dtime;
     // Gamefield
@@ -25,11 +26,14 @@ public class Game extends javax.swing.JPanel implements Runnable {
     // Overlay
     public boolean EscIsPressed = false;
     OverlayPanel OverlayPanel = new OverlayPanel();
-
+    //Towers
+    TowerHandler TowerHandeler = new TowerHandler();
+    
     public Game() {
         initComponents();
         Th = new Thread(this);
         Th.start();
+        TowerHandeler.setPlayfield(Playfield);
     }
 
     /**
@@ -58,8 +62,13 @@ public class Game extends javax.swing.JPanel implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        OverlayPanel.MouseClicked(evt);
-        Point2D.Double pt = Playfield.getSquarePos(evt.getX(), evt.getY());
+        if (EscIsPressed) {
+            OverlayPanel.MouseClicked(evt);
+        }
+        
+        Point2D.Double pt = new Point2D.Double(evt.getX(), evt.getY());
+        TowerHandeler.addTower(pt);
+        
         System.out.println("Rown nr: " + Playfield.getRowNR((int) pt.getX()) + " Kolum nr: " + Playfield.getRowNR((int) pt.getY()));
     }//GEN-LAST:event_formMouseClicked
 
@@ -73,15 +82,16 @@ public class Game extends javax.swing.JPanel implements Runnable {
             Dtime = 0;
         }
     }
-
+    
     private void Tick() {
         if (EscIsPressed == false) {
             Playfield.tick();
+            TowerHandeler.tick();
         } else {
             OverlayPanel.tick();
         }
     }
-
+    
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
@@ -90,12 +100,12 @@ public class Game extends javax.swing.JPanel implements Runnable {
 
         // paint stuff
         Playfield.paint(g2);
+        TowerHandeler.paint(g2);
         if (EscIsPressed) {
-
             OverlayPanel.paint(g2);
         }
     }
-
+    
     private void ClearScrean(Graphics2D g) {
         Color c = getBackground();
         Dimension d = getSize();
