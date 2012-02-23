@@ -4,12 +4,9 @@
  */
 package towerdefence;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.io.File;
+import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
@@ -20,37 +17,44 @@ public class Button {
 
     int Xpos, Ypos;
     Point MousePos;
-    Image image, ImageHover;
-
-    public Button(int Xpos, int Ypos, String ImageLoaction, String ImageLoactionHover) {
+    Image Image, ImageHover;
+    URL urlImage;
+    URL urlImageHover;
+    
+    public Button(int Xpos, int Ypos) {
         // init
         this.Xpos = Xpos;
         this.Ypos = Ypos;
+        urlImage = this.getClass().getResource("/img/Quit.png");
+        urlImageHover = this.getClass().getResource("/img/QuitHover.png");
+        
         try {
-            image = ImageIO.read(new File(ImageLoaction));
+            Image = ImageIO.read(urlImage);
         } catch (IOException e) {
             System.out.println(e.getMessage());
             System.out.println("I'm located at:" + System.getProperty("user.dir"));
         }
+
         try {
-            ImageHover = ImageIO.read(new File(ImageLoactionHover));
+            ImageHover = ImageIO.read(urlImageHover);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        
     }
 
-    public void paint(Graphics g) {
+    public void paint(Graphics2D g2) {
         if (hoverover(MouseInfo.getPointerInfo().getLocation())) {
-            g.drawImage(ImageHover, Xpos, Ypos, null);
+            g2.drawImage(ImageHover, Xpos, Ypos, null);
         } else {
-            g.drawImage(image, Xpos, Ypos, null);
+            g2.drawImage(Image, Xpos, Ypos, null);
         }
     }
 
     public boolean hoverover(double Xpos, double Ypos) {
         boolean returnAnswer = false;
-        if (Xpos >= this.Xpos && Xpos <= this.Xpos + image.getWidth(null)) {
-            if (Ypos >= this.Ypos && Ypos <= this.Ypos + image.getHeight(null)) {
+        if (Xpos >= this.Xpos && Xpos <= this.Xpos + Image.getWidth(null)) {
+            if (Ypos >= this.Ypos && Ypos <= this.Ypos + Image.getHeight(null)) {
                 returnAnswer = true;
             }
         }

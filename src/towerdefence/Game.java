@@ -4,11 +4,12 @@
  */
 package towerdefence;
 
-import Interface.OverlayPanel;
-import Interface.Playfield;
+import gameElements.OverlayPanel;
+import gameElements.Playfield;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -84,16 +85,18 @@ public class Game extends javax.swing.JPanel implements Runnable {
 
     @Override
     public void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D)g;
         // clear screen
-        ClearScrean(g);
+        ClearScrean(g2);
         
         // paint stuff
-        Playfield.paint(g);
+        Playfield.paint(g2);
         if (EscIsPressed) {
-            OverlayPanel.paint(g);
+            
+            OverlayPanel.paint(g2);
         }
     }
-    private void ClearScrean(Graphics g) {
+    private void ClearScrean(Graphics2D g) {
         Color c = getBackground();
         Dimension d = getSize();
         g.setColor(c);
