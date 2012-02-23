@@ -44,6 +44,7 @@ public class Button {
     }
 
     public void paint(Graphics2D g2) {
+        // paint button
         if (hoverover(MouseInfo.getPointerInfo().getLocation())) {
             g2.drawImage(ImageHover, Xpos, Ypos, null);
         } else {
