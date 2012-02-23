@@ -16,8 +16,8 @@ public class Playfield {
     public static final int FIELDWIDTH = 800;
     public static final int FIELDHEIGTH = 600;
     public static final int SQUAREWIDTH = 50;
-    int LocationLoactionLocation = 105;
-    int speed = 5;
+    double LocationLoactionLocation = 105;
+    double speed = .1;
 
     public void Playfield() {
     }
@@ -46,6 +46,6 @@ public class Playfield {
 
         // testing some shit
         g.setColor(Color.black);
-        g.drawRect(LocationLoactionLocation, 100, 20, 22);
+        g.drawRect((int)LocationLoactionLocation, 100, 20, 22);
     }
 }

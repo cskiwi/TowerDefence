@@ -7,6 +7,7 @@ package towerdefence;
 import Interface.OverlayPanel;
 import Interface.Playfield;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 /**
@@ -16,6 +17,8 @@ import java.awt.Graphics;
 public class Game extends javax.swing.JPanel implements Runnable {
 
     Thread Th;
+    double Dtime;
+    
     // Gamefield
     Playfield Playfield = new Playfield();
     // Overlay
@@ -54,18 +57,20 @@ public class Game extends javax.swing.JPanel implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-       OverlayPanel.MouseClicked(evt);
+        OverlayPanel.MouseClicked(evt);
     }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
     @Override
     public void run() {
         while (true) {
-            Tick();
-            repaint();
-            
+            Dtime += System.nanoTime();
+            if (Dtime >= java.lang.Math.pow(22, 11)){
+                Tick();
+                repaint();
+                Dtime = 0;
+            }
         }
     }
 
@@ -78,11 +83,21 @@ public class Game extends javax.swing.JPanel implements Runnable {
     }
 
     @Override
-    public void paintComponent(Graphics g) {       
-        if (EscIsPressed == false) {
-            Playfield.paint(g);
-        } else {
+    public void paintComponent(Graphics g) {
+        // clear screen
+        ClearScrean(g);
+        
+        // paint stuff
+        Playfield.paint(g);
+        if (EscIsPressed) {
             OverlayPanel.paint(g);
         }
+    }
+    private void ClearScrean(Graphics g) {
+        Color c = getBackground();
+        Dimension d = getSize();
+        g.setColor(c);
+        g.fillRect(0, 0, d.width, d.height);
+        g.setColor(Color.BLACK);
     }
 }

@@ -15,7 +15,7 @@ import towerdefence.Button;
  */
 public class OverlayPanel {
 
-    Color Background = new Color(0, 0, 0, 1);
+    Color Background = new Color(0, 0, 0, 100);
     int Width = Toolkit.getDefaultToolkit().getScreenSize().width;;
     int Height = Toolkit.getDefaultToolkit().getScreenSize().height;;
     Button btnQuit = new Button(Width / 2 - 50, Height / 2 - 15, "./src/img/Quit.png", "./src/img/QuitHover.png");;
