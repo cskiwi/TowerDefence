@@ -5,7 +5,6 @@
 package gameElements;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import towerdefence.Button;
@@ -19,9 +18,9 @@ public class OverlayPanel {
     Color Background = new Color(0, 0, 0, 100);
     int Width = Toolkit.getDefaultToolkit().getScreenSize().width;;
     int Height = Toolkit.getDefaultToolkit().getScreenSize().height;;
-    Button btnQuit = new Button(Width / 2 - 50, Height / 2 - 15);
+    Button btnQuit = new Button(Width / 2 - 50, Height / 2 - 15, "Goodbye");
 
-    public void OverlayPanel() {
+    public OverlayPanel() {
 
     }
     public void tick() {

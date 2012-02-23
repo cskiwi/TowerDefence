@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 
 /**
  *
@@ -19,9 +20,8 @@ public class Game extends javax.swing.JPanel implements Runnable {
 
     Thread Th;
     double Dtime;
-    
     // Gamefield
-    Playfield Playfield = new Playfield();
+    Playfield Playfield = new Playfield(100, 100);
     // Overlay
     public boolean EscIsPressed = false;
     OverlayPanel OverlayPanel = new OverlayPanel();
@@ -59,6 +59,8 @@ public class Game extends javax.swing.JPanel implements Runnable {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         OverlayPanel.MouseClicked(evt);
+        Point2D.Double pt = Playfield.getSquarePos(evt.getX(), evt.getY());
+        System.out.println("Rown nr: " + Playfield.getRowNR((int) pt.getX()) + " Kolum nr: " + Playfield.getRowNR((int) pt.getY()));
     }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -66,12 +68,9 @@ public class Game extends javax.swing.JPanel implements Runnable {
     @Override
     public void run() {
         while (true) {
-            Dtime += System.nanoTime();
-            if (Dtime >= java.lang.Math.pow(22, 11)){
-                Tick();
-                repaint();
-                Dtime = 0;
-            }
+            Tick();
+            repaint();
+            Dtime = 0;
         }
     }
 
@@ -85,17 +84,18 @@ public class Game extends javax.swing.JPanel implements Runnable {
 
     @Override
     public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         // clear screen
         ClearScrean(g2);
-        
+
         // paint stuff
         Playfield.paint(g2);
         if (EscIsPressed) {
-            
+
             OverlayPanel.paint(g2);
         }
     }
+
     private void ClearScrean(Graphics2D g) {
         Color c = getBackground();
         Dimension d = getSize();
