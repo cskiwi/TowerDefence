@@ -69,7 +69,7 @@ public class Game extends javax.swing.JPanel implements Runnable {
         Point2D.Double pt = new Point2D.Double(evt.getX(), evt.getY());
         TowerHandeler.addTower(pt);
         
-        System.out.println("Rown nr: " + Playfield.getRowNR((int) pt.getX()) + " Kolum nr: " + Playfield.getRowNR((int) pt.getY()));
+        System.out.println("Horizontal nr: " + Playfield.getHorNR((int) pt.getX()) + " Vertical nr: " + Playfield.getVertNR((int) pt.getY()));
     }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

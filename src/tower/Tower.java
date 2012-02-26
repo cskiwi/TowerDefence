@@ -13,8 +13,8 @@ import java.awt.Graphics2D;
  */
 
 public class Tower {
-    protected int row;
-    protected int kolum;
+    protected int HorizontalNr;
+    protected int VerticalNr;
     Playfield playfield;
   
     public void paint(Graphics2D g2) {
@@ -26,10 +26,10 @@ public class Tower {
     public void setPlayfield(Playfield pf){
         playfield = pf;
     }
-    public int getRow(){
-        return row;
+    public int getHorizontalNr(){
+        return HorizontalNr;
     }
-    public int getKolum(){
-        return kolum;
+    public int getVerticalNr(){
+        return VerticalNr;
     }
 }

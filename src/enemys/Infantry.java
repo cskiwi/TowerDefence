@@ -4,10 +4,17 @@
  */
 package enemys;
 
+import java.awt.Graphics2D;
+
 /**
  *
  * @author Glenn Latomme <glenn.latomme@gmail.com>
  */
-public class Infantry extends EnemyMainClass{
-    
+public class Infantry extends EnemyHandeler {
+
+    public void Tick() {
+    }
+
+    public void paint(Graphics2D g2) {
+    }
 }

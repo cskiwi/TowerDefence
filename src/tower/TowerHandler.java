@@ -45,11 +45,11 @@ public class TowerHandler {
         boolean doIt = true;
         Tower tempTower = new BasicTower(pt, playfield);
         for (int i = 0; i < ActiveTowers; i++) {
-            if (Towers[i].getKolum() == tempTower.getKolum() && Towers[i].getRow() == tempTower.getRow()) {
+            if (Towers[i].getVerticalNr() == tempTower.getVerticalNr() && Towers[i].getVerticalNr() == tempTower.getVerticalNr()) {
                 doIt = false;
             }
         }
-        if(tempTower.getKolum() == -1 || tempTower.getRow() == -1){
+        if(tempTower.getVerticalNr() == -1 || tempTower.getVerticalNr() == -1){
             doIt = false;
         }
         if (doIt) {
